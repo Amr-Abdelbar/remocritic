@@ -12,7 +12,10 @@ Example: "Chart drawing library graphs the user data"
 Did you add any additional modules that someone needs to
 install (for instance anything in Python that you `pip
 install-ed`)?
+
+-Matplotlib
 -Flask
+
 ## Project Checklist
 - [X] It is available on GitHub.
 - [X] It uses the Flask web framework.
@@ -20,7 +23,7 @@ install-ed`)?
 Library other than the random module.
 Please provide the name of the module you are using in your
 app.
-- Module name:
+- Module name: datetime
 - [] It contains at least one class written by you that has
 both properties and methods. It uses `__init__()` to let the
 class initialize the object's attributes (note that
