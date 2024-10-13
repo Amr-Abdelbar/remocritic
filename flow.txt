@@ -1,0 +1,45 @@
+OpenCritic Flowchart Outline
+Start
+
+User visits OpenCritic
+Homepage
+
+Options:
+View Top Rated Games
+Search for a Game
+Explore Game Categories
+Read Critic Reviews
+View Top Rated Games
+
+Display List of Top Rated Games
+Options:
+Click on Game for Details
+Filter by Platform
+Sort by Release Date
+Search for a Game
+
+User inputs game title
+Options:
+Display Search Results
+Select Game for Details
+Explore Game Categories
+
+Display Categories (e.g., Action, Adventure, RPG)
+Options:
+Select Category
+View Games in Category
+Read Critic Reviews
+
+Options:
+Browse by Critic
+View Reviews for a Specific Game
+Game Details Page
+
+Display Game Information (e.g., score, release date, summary)
+Options:
+Read Full Reviews
+View User Reviews
+Compare with Similar Games
+End
+
+User exits the site or returns to Homepage
