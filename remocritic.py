@@ -16,3 +16,12 @@ def homepage():
 @app.route("/results")
 def results():
     return get_html("results")
+
+@app.route("/browse")
+def results():
+    return get_html("browse")
+
+@app.route("/localLib")
+def results():
+    return get_html("localLib")
+
