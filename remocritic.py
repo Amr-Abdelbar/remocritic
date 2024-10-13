@@ -11,4 +11,8 @@ def get_html(file_name):
 
 @app.route("/")
 def homepage():
-    return get_html(index)
+    return get_html("index")
+
+@app.route("/results")
+def results():
+    return get_html("results")

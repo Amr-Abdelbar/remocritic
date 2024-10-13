@@ -13,8 +13,8 @@ Did you add any additional modules that someone needs to
 install (for instance anything in Python that you `pip
 install-ed`)?
 
--Matplotlib
--Flask
+- Matplotlib
+- Flask
 
 ## Project Checklist
 - [X] It is available on GitHub.
