@@ -5,20 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Remote Critic</title>
     <link rel="stylesheet" href="static/style.css">
-    <nav id="navbar">
-        <a href="/browse">Browse All Games</a>
-        <a href="/localLib">Browse Your Local Library</a>
-        <a href="/results">Search</a>
-    </nav>
 </head>
 <body>
-    <div id="everything">
-        <h1 id="maintitle">RemoCritic</h1>
-        <p id="subtitle">The new review aggregator on the block</p>
-        {% for game in content %}
-        <p>{{game.name}}</p>
-        {%endfor%}
+        <div id="logo">
+            <h1 id="maintitle">RemoCritic</h1>
+            <p id="subtitle">The new review aggregator on the block</p>
+        </div>
+        <nav id="navbar">
+            <a href="/browse">Browse All Games</a>
+            <a href="/localLib">Browse Your Local Library</a>
+            <a href="/results">Search</a>
+        </nav>
+        <div class="flex-container">
+
+            <div id="popular">
+                <h2>Popular</h2>
+                {% for game in popular %}
+                <p>{{game.name}}</p>
+                {%endfor%}
+            </div>
+            
+            <div id="this_week">
+                <h2>Reviewed This Week</h2>
+                {% for game in this_week %}
+                <p>{{game.name}}</p>
+                {%endfor%}
+            </div>
+
+            <div id="upcoming">
+                <h2>Upcoming Releases</h2>
+                {% for game in upcoming %}
+                <p>{{game.name}}</p>
+                {%endfor%}
+            </div>
+
+        </div>
         <script src="static/script.js"></script>
-    </div>
 </body>
 </html>

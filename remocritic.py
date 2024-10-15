@@ -15,15 +15,22 @@ def get_html(file_name):
 
 @app.route("/")
 def homepage():
-
-    url = "https://opencritic-api.p.rapidapi.com/game/reviewed-this-week"
+    
     headers = {
 	"x-rapidapi-key": "a374990eafmsh0e1261ce05bf6f1p1c7012jsn9edd139d87b7",
 	"x-rapidapi-host": "opencritic-api.p.rapidapi.com"
     }
-    response = requests.get(url, headers=headers)
 
-    return render_template("index.html", content = response.json())
+    week_url = "https://opencritic-api.p.rapidapi.com/game/reviewed-this-week"
+    upcoming_url = "https://opencritic-api.p.rapidapi.com/game/upcoming"
+    popular_url = "https://opencritic-api.p.rapidapi.com/game/popular"
+
+    popular_response = requests.get(popular_url, headers=headers)
+    week_response = requests.get(week_url, headers=headers)
+    upcoming_response = requests.get(upcoming_url, headers=headers)
+
+
+    return render_template("index.html", this_week = week_response.json(), popular = popular_response.json(), upcoming = upcoming_response.json())
 
 @app.route("/searchResults")
 def search_results():

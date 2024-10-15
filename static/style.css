@@ -3,7 +3,7 @@
     text-align: center;
 }
 
-#everything {
+#logo {
     text-align: center;
 }
 
@@ -15,4 +15,26 @@
 #subtitle {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     size: 10px;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+
+#this_week {
+    display: flex;
+    flex-direction: column;
+}
+
+#popular {
+    display: flex;
+    flex-direction: column;
+}
+
+#upcoming {
+    display: flex;
+    flex-direction: column;
 }
