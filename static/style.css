@@ -1,0 +1,18 @@
+#navbar {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+}
+
+#everything {
+    text-align: center;
+}
+
+#maintitle {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #22c78d;
+}
+
+#subtitle {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    size: 10px;
+}
