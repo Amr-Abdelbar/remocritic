@@ -2,6 +2,7 @@ import datetime
 import json
 import matplotlib as plt
 import numpy as np
+
 from flask import Flask, render_template
 import requests
 
@@ -25,12 +26,19 @@ def homepage():
     upcoming_url = "https://opencritic-api.p.rapidapi.com/game/upcoming"
     popular_url = "https://opencritic-api.p.rapidapi.com/game/popular"
 
-    popular_response = requests.get(popular_url, headers=headers)
-    week_response = requests.get(week_url, headers=headers)
-    upcoming_response = requests.get(upcoming_url, headers=headers)
+    popular_response = requests.get(popular_url, headers=headers).json()
+    week_response = requests.get(week_url, headers=headers).json()
+    upcoming_response = requests.get(upcoming_url, headers=headers).json()
+
+    if (len(week_response) < len(upcoming_response)):
+        popular_response = popular_response[:len(week_response)]        
+        upcoming_response = upcoming_response[:len(week_response)]    
+    else:
+        popular_response = popular_response[:len(upcoming_response)]        
+        week_response = week_response[:len(upcoming_response)]
 
 
-    return render_template("index.html", this_week = week_response.json(), popular = popular_response.json(), upcoming = upcoming_response.json())
+    return render_template("index.html", this_week = week_response, popular = popular_response, upcoming = upcoming_response)
 
 @app.route("/searchResults")
 def search_results():
@@ -44,3 +52,5 @@ def browse_all():
 def local_user_lib():
     return get_html("localUserLibrary")
 
+if __name__ == '__main__':
+    app.run(debug=True)
