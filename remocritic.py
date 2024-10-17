@@ -2,8 +2,7 @@ import datetime
 import json
 import matplotlib as plt
 import numpy as np
-
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import requests
 
 app = Flask("RemoCritic")
@@ -14,13 +13,12 @@ def get_html(file_name):
     html_file.close()
     return content
 
-@app.route("/")
+@app.route("/", methods = ["GET", "POST"] )
 def homepage():
-    
     headers = {
-	"x-rapidapi-key": "a374990eafmsh0e1261ce05bf6f1p1c7012jsn9edd139d87b7",
-	"x-rapidapi-host": "opencritic-api.p.rapidapi.com"
-    }
+        "x-rapidapi-key": "a374990eafmsh0e1261ce05bf6f1p1c7012jsn9edd139d87b7",
+        "x-rapidapi-host": "opencritic-api.p.rapidapi.com"
+        }
 
     week_url = "https://opencritic-api.p.rapidapi.com/game/reviewed-this-week"
     upcoming_url = "https://opencritic-api.p.rapidapi.com/game/upcoming"
@@ -37,20 +35,43 @@ def homepage():
         popular_response = popular_response[:len(upcoming_response)]        
         week_response = week_response[:len(upcoming_response)]
 
-
-    return render_template("index.html", this_week = week_response, popular = popular_response, upcoming = upcoming_response)
+    if request.method == 'GET':
+        pass
+        
+    else:
+        search_value = request.form['search']
+        querystring = {"criteria":search_value}
+        url = "https://opencritic-api.p.rapidapi.com/game/search"
+        search_response = requests.get(url, headers=headers, params=querystring).json()
+        print(search_response)
+    return render_template("index.html", this_week = week_response, popular = popular_response, upcoming = upcoming_response, search = search_response)
 
 @app.route("/searchResults")
 def search_results():
-    return get_html("searchResults")
+    return render_template("searchResults")
 
 @app.route("/browseAll")
 def browse_all():
-    return get_html("browseAll")
+    return render_template("browseAll")
 
 @app.route("/localUserLibrary")
 def local_user_lib():
-    return get_html("localUserLibrary")
+    return render_template("localUserLibrary")
+
+@app.route("/game")
+def game():
+     
+    url = f"https://opencritic-api.p.rapidapi.com//game/{id}"
+
+    headers = {
+	"x-rapidapi-key": "a374990eafmsh0e1261ce05bf6f1p1c7012jsn9edd139d87b7",
+	"x-rapidapi-host": "opencritic-api.p.rapidapi.com"
+    }
+
+    
+
+     
+    return render_template("game.html")
 
 if __name__ == '__main__':
     app.run(debug=True)
