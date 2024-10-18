@@ -2,7 +2,7 @@ import datetime
 import json
 import matplotlib as plt
 import numpy as np
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 import requests
 
 app = Flask("RemoCritic")
@@ -15,28 +15,29 @@ def get_html(file_name):
 
 @app.route("/", methods = ["GET", "POST"] )
 def homepage():
-    headers = {
+    
+    if request.method == 'GET':
+        headers = {
         "x-rapidapi-key": "a374990eafmsh0e1261ce05bf6f1p1c7012jsn9edd139d87b7",
         "x-rapidapi-host": "opencritic-api.p.rapidapi.com"
         }
 
-    week_url = "https://opencritic-api.p.rapidapi.com/game/reviewed-this-week"
-    upcoming_url = "https://opencritic-api.p.rapidapi.com/game/upcoming"
-    popular_url = "https://opencritic-api.p.rapidapi.com/game/popular"
+        week_url = "https://opencritic-api.p.rapidapi.com/game/reviewed-this-week"
+        upcoming_url = "https://opencritic-api.p.rapidapi.com/game/upcoming"
+        popular_url = "https://opencritic-api.p.rapidapi.com/game/popular"
 
-    popular_response = requests.get(popular_url, headers=headers).json()
-    week_response = requests.get(week_url, headers=headers).json()
-    upcoming_response = requests.get(upcoming_url, headers=headers).json()
+        popular_response = requests.get(popular_url, headers=headers).json()
+        week_response = requests.get(week_url, headers=headers).json()
+        upcoming_response = requests.get(upcoming_url, headers=headers).json()
 
-    if (len(week_response) < len(upcoming_response)):
-        popular_response = popular_response[:len(week_response)]        
-        upcoming_response = upcoming_response[:len(week_response)]    
-    else:
-        popular_response = popular_response[:len(upcoming_response)]        
-        week_response = week_response[:len(upcoming_response)]
+        if (len(week_response) < len(upcoming_response)):
+            popular_response = popular_response[:len(week_response)]        
+            upcoming_response = upcoming_response[:len(week_response)]    
+        else:
+            popular_response = popular_response[:len(upcoming_response)]        
+            week_response = week_response[:len(upcoming_response)]
 
-    if request.method == 'GET':
-        pass
+        return render_template("index.html", this_week = week_response, popular = popular_response, upcoming = upcoming_response)
         
     else:
         search_value = request.form['search']
@@ -44,11 +45,14 @@ def homepage():
         url = "https://opencritic-api.p.rapidapi.com/game/search"
         search_response = requests.get(url, headers=headers, params=querystring).json()
         print(search_response)
-    return render_template("index.html", this_week = week_response, popular = popular_response, upcoming = upcoming_response, search = search_response)
 
-@app.route("/searchResults")
-def search_results():
-    return render_template("searchResults")
+        return redirect(url_for('searchResults', search_response=search_response))
+
+@app.route("/searchResults/<result>")
+def search_results(result):
+
+
+    return render_template("searchResults", result=result)
 
 @app.route("/browseAll")
 def browse_all():
