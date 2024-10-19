@@ -39,7 +39,7 @@
                 <h2>Reviewed This Week</h2>
                 {% for game in this_week %}
                 <p>{{game.name}}</p>
-                <img src="https://img.opencritic.com/{{game.images}}" alt="an image">
+                <img src="https://img.opencritic.com/{{game.images.box}}" alt="an image">
                 {%endfor%}
             </div>
 

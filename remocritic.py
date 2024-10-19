@@ -33,6 +33,14 @@ def homepage():
         week_response = requests.get(week_url, headers=headers).json()
         upcoming_response = requests.get(upcoming_url, headers=headers).json()
 
+        game_image_list = {}
+
+        for game in week_response:
+            if game.get("images") == None:
+                continue
+            else:
+                print(game.get("images").get("box").get("sm"))
+
         if (len(week_response) < len(upcoming_response)):
             popular_response = popular_response[:len(week_response)]        
             upcoming_response = upcoming_response[:len(week_response)]    
@@ -43,6 +51,7 @@ def homepage():
         return render_template("index.html", this_week = week_response, popular = popular_response, upcoming = upcoming_response)
         
     else:
+        
         search_value = request.form['search']
         querystring = {"criteria":search_value}
         url = "https://opencritic-api.p.rapidapi.com/game/search"
