@@ -22,10 +22,7 @@ def homepage():
         "x-rapidapi-host": "opencritic-api.p.rapidapi.com"
         }
     
-
-    
     if request.method == 'GET':
-
 
         week_url = "https://opencritic-api.p.rapidapi.com/game/reviewed-this-week"
         upcoming_url = "https://opencritic-api.p.rapidapi.com/game/upcoming"
@@ -34,7 +31,6 @@ def homepage():
         popular_response = requests.get(popular_url, headers=headers).json()
         week_response = requests.get(week_url, headers=headers).json()
         upcoming_response = requests.get(upcoming_url, headers=headers).json()
-
 
         '''
         for game in week_response:
@@ -47,7 +43,6 @@ def homepage():
                 # sm.append(images['box']['sm'])
             # small_img = box['sm']
             # print(type(images))
-
 
             # if small_img:
             #     game_images.append(small_img)
