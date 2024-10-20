@@ -102,8 +102,6 @@ def game(id):
 
     print(game_response)
 
-    
-
     return render_template("game.html", game = game_response, review=review_response)
 
 if __name__ == '__main__':
