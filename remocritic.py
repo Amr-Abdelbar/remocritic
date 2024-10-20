@@ -33,13 +33,15 @@ def homepage():
         week_response = requests.get(week_url, headers=headers).json()
         upcoming_response = requests.get(upcoming_url, headers=headers).json()
 
-        game_image_list = {}
+        game_images = []
 
         for game in week_response:
-            if game.get("images") == None:
-                continue
-            else:
-                print(game.get("images").get("box").get("sm"))
+            images = game.get("images", {})
+            box = images.get("box", {})
+            small_img = box.get("sm")
+
+            if small_img:
+                game_images.append(small_img)
 
         if (len(week_response) < len(upcoming_response)):
             popular_response = popular_response[:len(week_response)]        
