@@ -50,7 +50,7 @@ def homepage():
             popular_response = popular_response[:len(upcoming_response)]        
             week_response = week_response[:len(upcoming_response)]
 
-        return render_template("index.html", this_week = week_response, popular = popular_response, upcoming = upcoming_response)
+        return render_template("index.html", this_week = week_response, popular = popular_response, upcoming = upcoming_response, image_urls = game_images)
         
     else:
         
@@ -76,10 +76,10 @@ def browse_all():
 def local_user_lib():
     return render_template("localUserLibrary.html")
 
-@app.route("/game")
+@app.route("/game/{{id}}")
 def game():
      
-    url = f"https://opencritic-api.p.rapidapi.com//game/{id}"
+    url = f"https://opencritic-api.p.rapidapi.com//game/{{id}}"
 
     headers = {
 	"x-rapidapi-key": "a374990eafmsh0e1261ce05bf6f1p1c7012jsn9edd139d87b7",
