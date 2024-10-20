@@ -31,7 +31,7 @@
             <div id="popular">
                 <h2>Popular</h2>
                 {% for game in popular %}
-                <a href="/game/{{id}}">
+                <a href="/game/{{game.id}}">
                     <p>{{game.name}}</p>
                 </a>
                 {%endfor%}

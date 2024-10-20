@@ -86,20 +86,25 @@ def browse_all():
 def local_user_lib():
     return render_template("localUserLibrary.html")
 
-@app.route("/game/{{id}}")
-def game():
-     
-    review_url = f"https://opencritic-api.p.rapidapi.com/reviews/game/{{id}}"
-    review_querystring = {"skip":"20","sort":"newest"}    
-    review_response = requests.get(review_url, headers=headers, params = review_querystring).json() 
-    game_url = f"https://opencritic-api.p.rapidapi.com/game/{{id}}"
+@app.route("/game/<id>")
+def game(id):
 
     headers = {
 	"x-rapidapi-key": "a374990eafmsh0e1261ce05bf6f1p1c7012jsn9edd139d87b7",
 	"x-rapidapi-host": "opencritic-api.p.rapidapi.com"
     }
 
-    return render_template("game.html", game = game_url, review=review_response)
+    review_url = f"https://opencritic-api.p.rapidapi.com/reviews/game/{{id}}"
+    review_querystring = {"skip":"20","sort":"newest"}    
+    review_response = requests.get(review_url, headers=headers, params = review_querystring).json() 
+    game_url = f"https://opencritic-api.p.rapidapi.com/game/{{id}}"
+    game_response = requests.get(game_url, headers = headers).json()
+
+    print(game_response)
+
+    
+
+    return render_template("game.html", game = game_response, review=review_response)
 
 if __name__ == '__main__':
     app.run(debug=True)
