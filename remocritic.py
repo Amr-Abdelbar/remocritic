@@ -30,18 +30,11 @@ def homepage():
         week_url = "https://opencritic-api.p.rapidapi.com/game/reviewed-this-week"
         upcoming_url = "https://opencritic-api.p.rapidapi.com/game/upcoming"
         popular_url = "https://opencritic-api.p.rapidapi.com/game/popular"
-        review_url = "https://opencritic-api.p.rapidapi.com/reviews/game/"
 
-        review_querystring = {"skip":"20","sort":"newest"}
-
-
-        
-        review_response = requests.get(review_url, headers=headers, params = review_querystring).json()
         popular_response = requests.get(popular_url, headers=headers).json()
         week_response = requests.get(week_url, headers=headers).json()
         upcoming_response = requests.get(upcoming_url, headers=headers).json()
 
-        print(review_response[30])
 
         '''
         for game in week_response:
@@ -96,17 +89,17 @@ def local_user_lib():
 @app.route("/game/{{id}}")
 def game():
      
-    url = f"https://opencritic-api.p.rapidapi.com//game/{{id}}"
+    review_url = f"https://opencritic-api.p.rapidapi.com/reviews/game/{{id}}"
+    review_querystring = {"skip":"20","sort":"newest"}    
+    review_response = requests.get(review_url, headers=headers, params = review_querystring).json() 
+    game_url = f"https://opencritic-api.p.rapidapi.com/game/{{id}}"
 
     headers = {
 	"x-rapidapi-key": "a374990eafmsh0e1261ce05bf6f1p1c7012jsn9edd139d87b7",
 	"x-rapidapi-host": "opencritic-api.p.rapidapi.com"
     }
 
-    
-
-     
-    return render_template("game.html")
+    return render_template("game.html", game = game_url, review=review_response)
 
 if __name__ == '__main__':
     app.run(debug=True)
