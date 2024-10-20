@@ -60,7 +60,7 @@ def homepage():
             popular_response = popular_response[:len(upcoming_response)]        
             week_response = week_response[:len(upcoming_response)]
 
-        return render_template("index.html", this_week = week_response, popular = popular_response, upcoming = upcoming_response, review = review_response)
+        return render_template("index.html", this_week = week_response, popular = popular_response, upcoming = upcoming_response)
         
     else:
         
