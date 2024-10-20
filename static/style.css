@@ -17,6 +17,12 @@
     size: 10px;
 }
 
+.search {
+    display: flex;
+    text-align: center;
+    justify-content: space-evenly;
+}
+
 .flex-container {
     display: flex;
     flex-direction: row;

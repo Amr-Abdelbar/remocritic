@@ -22,35 +22,52 @@ def homepage():
         "x-rapidapi-host": "opencritic-api.p.rapidapi.com"
         }
     
+
+    
     if request.method == 'GET':
 
 
         week_url = "https://opencritic-api.p.rapidapi.com/game/reviewed-this-week"
         upcoming_url = "https://opencritic-api.p.rapidapi.com/game/upcoming"
         popular_url = "https://opencritic-api.p.rapidapi.com/game/popular"
+        review_url = "https://opencritic-api.p.rapidapi.com/reviews/game/"
 
+        review_querystring = {"skip":"20","sort":"newest"}
+
+
+        
+        review_response = requests.get(review_url, headers=headers, params = review_querystring).json()
         popular_response = requests.get(popular_url, headers=headers).json()
         week_response = requests.get(week_url, headers=headers).json()
         upcoming_response = requests.get(upcoming_url, headers=headers).json()
 
-        game_images = []
+        print(review_response[30])
 
+        '''
         for game in week_response:
-            images = game.get("images", {})
-            box = images.get("box", {})
-            small_img = box.get("sm")
+            images = game['images']
+            box = images["box"]
+            sm = []
+            if 'box' in images.keys():
+                if 'sm' in box.keys():
+                    sm.append(images["box"]["sm"])
+                # sm.append(images['box']['sm'])
+            # small_img = box['sm']
+            # print(type(images))
 
-            if small_img:
-                game_images.append(small_img)
 
+            # if small_img:
+            #     game_images.append(small_img)
+            '''
         if (len(week_response) < len(upcoming_response)):
             popular_response = popular_response[:len(week_response)]        
-            upcoming_response = upcoming_response[:len(week_response)]    
+            upcoming_response = upcoming_response[:len(week_response)]
+
         else:
             popular_response = popular_response[:len(upcoming_response)]        
             week_response = week_response[:len(upcoming_response)]
 
-        return render_template("index.html", this_week = week_response, popular = popular_response, upcoming = upcoming_response, image_urls = game_images)
+        return render_template("index.html", this_week = week_response, popular = popular_response, upcoming = upcoming_response, review = review_response)
         
     else:
         
