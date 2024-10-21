@@ -18,7 +18,7 @@ def get_html(file_name):
 def homepage():
 
     headers = {
-        "x-rapidapi-key": "640030e84amsha682356e4ad90dap1efe26jsn3be433e406b4",
+        "x-rapidapi-key": "27b4fc4979mshbfd3db75c68c1eap1d626fjsnfa5a4fd9e706",
         "x-rapidapi-host": "opencritic-api.p.rapidapi.com"
         }
     
@@ -32,21 +32,6 @@ def homepage():
         week_response = requests.get(week_url, headers=headers).json()
         upcoming_response = requests.get(upcoming_url, headers=headers).json()
 
-        '''
-        for game in week_response:
-            images = game['images']
-            box = images["box"]
-            sm = []
-            if 'box' in images.keys():
-                if 'sm' in box.keys():
-                    sm.append(images["box"]["sm"])
-                # sm.append(images['box']['sm'])
-            # small_img = box['sm']
-            # print(type(images))
-
-            # if small_img:
-            #     game_images.append(small_img)
-            '''
         if (len(week_response) < len(upcoming_response)):
             popular_response = popular_response[:len(week_response)]        
             upcoming_response = upcoming_response[:len(week_response)]
