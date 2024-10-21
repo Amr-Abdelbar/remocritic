@@ -1,4 +1,4 @@
 document.addEventListener("DOMContentLoaded", ()=> {
     const gameCard = document.getElementsByClassName("gameList");
-    const userLibrary = document.getElementById("userLibrary");
+    const userLibrary = document.getElementById("localUserLibrary");
 })
