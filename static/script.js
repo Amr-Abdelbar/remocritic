@@ -1,6 +1,23 @@
+
+function userLogged() {
+    if (localStorage.getItem('userName') == null) {
+        return false;
+    }
+    return true
+}
+
 document.addEventListener("DOMContentLoaded", ()=> {
     const gameCard = document.getElementsByClassName("gameList");
     const addLibButton = document.getElementsByClassName("addToLibrary");
+
+    const form = document.getElementsByClassName('login')[0];
+    // console.log(form);
+
+    if (!userLogged()) {
+        form.style.display = 'block';
+    } else {
+        form.style.display =  'none';
+    }
 
     // const userLibrary = document.getElementById("localUserLibrary");
 
