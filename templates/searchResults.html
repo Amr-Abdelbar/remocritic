@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Result</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
     <nav id="navbar">
         <a href="/browse">Browse All Games</a>
         <a href="/localLib">Browse Your Local Library</a>
@@ -15,6 +15,6 @@
     <h1 id="maintitle">RemoCritic</h1>
     <p id="subtitle">The new review aggregator on the block</p>
     <p>{{result}}</p>
-    <script src="script.js"></script>
+    <script src="{{url_for('static',filename='script.js')}}"></script>
 </body>
 </html>

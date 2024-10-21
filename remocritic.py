@@ -58,10 +58,6 @@ def search_results():
 
     return render_template("searchResults.html", result = search_response)
 
-@app.route("/browseAll")
-def browse_all():
-    return render_template("browseAll.html")
-
 @app.route("/localUserLibrary")
 def local_user_lib():
     return render_template("localUserLibrary.html")
@@ -70,7 +66,7 @@ def local_user_lib():
 def game(id):
 
     headers = {
-	"x-rapidapi-key": "640030e84amsha682356e4ad90dap1efe26jsn3be433e406b4",
+	"x-rapidapi-key": "27b4fc4979mshbfd3db75c68c1eap1d626fjsnfa5a4fd9e706",
 	"x-rapidapi-host": "opencritic-api.p.rapidapi.com"
     }
 

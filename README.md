@@ -43,29 +43,29 @@ localStorage of the web browser.
 rather than var).
 - [] It makes use of the reading and writing to the same file
 feature.
-- [] It contains conditional statements. Please provide below
+- [X] It contains conditional statements. Please provide below
 the file name and the line number(s) of at least
 one example of a conditional statement in your code.
-- File name:
-- Line number(s):
+- File name: remocritic.py
+- Line number(s): 25
 - [] It contains loops. Please provide below the file name
 and the line number(s) of at least
 one example of a loop in your code.
 - File name:
 - Line number(s):
-- [] It lets the user enter a value in a text box at some
+- [X] It lets the user enter a value in a text box at some
 point.
 This value is received and processed by your back end
 Python code.
 - [] It doesn't generate any error message even if the user
 enters a wrong input.
-- [] It is styled using your own CSS.
-- [] The code follows the code and style conventions as
+- [X] It is styled using your own CSS.
+- [X] The code follows the code and style conventions as
 introduced in the course, is fully documented using comments
 and doesn't contain unused or experimental code.
 In particular, the code should not use `print()` or
 `console.log()` for any information the app user should see.
 Instead, all user feedback needs to be visible in the
 browser.
-- [] All exercises have been completed as per the
+- [X] All exercises have been completed as per the
 requirements and pushed to the respective GitHub repository.
