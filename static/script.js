@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
 })
 
 if (localStorage.getItem("userLibrary") == null) {
-    localStorage.setItem("userLibrary" = toString(userLibrary))
+    localStorage.setItem("userLibrary", toString(userLibrary))
 }
 
 else {
