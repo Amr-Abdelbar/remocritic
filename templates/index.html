@@ -23,31 +23,13 @@
         </div>
         <div class="flex-container">
             <div class="gameList"></div>
-            <div id="popular">
-                <h2>Popular</h2>
-                {% for game in popular %}
-                <div class="gameCard">
-                    <img src="{{url_for('static',filename='default_img.png')}}" alt="" width="240" height="160">
-                    <a href="/game/{{game.id}}">
-                        <p class="gameName">{{game.name}}</p>   
-                    </a>
-                    {% if game.topCriticScore == -1 %}
-                    <p class="criticScore">Unrated</p>
-                    {% else %}
-                    <p class="criticScore">{{(game.topCriticScore)|round(2)}}</p>
-                    {% endif %}
-                    <button class="addToLibrary" game-id="{{game.id}}">Add to library</button>
-                </div>
-                {%endfor%}
-            </div>
-            
-            <div id="this_week">
-                <h2>Reviewed This Week</h2>
-                {% for game in this_week %}
+                <div id="popular">
+                    <h2>Popular</h2>
+                    {% for game in popular %}
                     <div class="gameCard">
                         <img src="{{url_for('static',filename='default_img.png')}}" alt="" width="240" height="160">
                         <a href="/game/{{game.id}}">
-                            <p class="gameName">{{game.name}}</p>
+                            <p class="gameName">{{game.name}}</p>   
                         </a>
                         {% if game.topCriticScore == -1 %}
                         <p class="criticScore">Unrated</p>
@@ -56,27 +38,45 @@
                         {% endif %}
                         <button class="addToLibrary" game-id="{{game.id}}">Add to library</button>
                     </div>
-                {%endfor%}
-            </div>
-
-            <div id="upcoming">
-                <h2>Upcoming Releases</h2>
-                {% for game in upcoming %}
-                    <div class="gameCard">
-                        <img src="{{url_for('static',filename='default_img.png')}}" alt="" width="240" height="160">
-                        <a href="/game/{{game.id}}">
-                            <p class="gameName">{{game.name}}</p>
-                        </a>
-                        {% if game.topCriticScore == -1 %}
-                        <p class="criticScore">Unrated</p>
-                        {% else %}
-                        <p class="criticScore">{{(game.topCriticScore)|round(2)}}</p>
-                        {% endif %}
-                    </div>
-                {%endfor%}
+                    {%endfor%}
+                </div>
                 
-            </div>
+                <div id="this_week">
+                    <h2>Reviewed This Week</h2>
+                    {% for game in this_week %}
+                        <div class="gameCard">
+                            <img src="{{url_for('static',filename='default_img.png')}}" alt="" width="240" height="160">
+                            <a href="/game/{{game.id}}">
+                                <p class="gameName">{{game.name}}</p>
+                            </a>
+                            {% if game.topCriticScore == -1 %}
+                            <p class="criticScore">Unrated</p>
+                            {% else %}
+                            <p class="criticScore">{{(game.topCriticScore)|round(2)}}</p>
+                            {% endif %}
+                            <button class="addToLibrary" game-id="{{game.id}}">Add to library</button>
+                        </div>
+                    {%endfor%}
+                </div>
 
+                <div id="upcoming">
+                    <h2>Upcoming Releases</h2>
+                    {% for game in upcoming %}
+                        <div class="gameCard">
+                            <img src="{{url_for('static',filename='default_img.png')}}" alt="" width="240" height="160">
+                            <a href="/game/{{game.id}}">
+                                <p class="gameName">{{game.name}}</p>
+                            </a>
+                            {% if game.topCriticScore == -1 %}
+                            <p class="criticScore">Unrated</p>
+                            {% else %}
+                            <p class="criticScore">{{(game.topCriticScore)|round(2)}}</p>
+                            {% endif %}
+                        </div>
+                    {%endfor%}
+                    
+                </div>
+            </div>
         </div>
         <script src="{{url_for('static',filename='script.js')}}"></script>
 </body>
