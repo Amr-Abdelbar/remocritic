@@ -27,31 +27,43 @@
             <div id="popular">
                 <h2>Popular</h2>
                 {% for game in popular %}
-                <a href="/game/{{game.id}}">
-                    <p class="gameName">{{game.name}}</p>
-                    <p class="criticScore">{{game.topCriticScore}}</p>
-                </a>
+                <div class="gameCard">
+                    <img src="{{url_for('static',filename='default_img.png')}}" alt="" width="240" height="160">
+                    <a href="/game/{{game.id}}">
+                        <p class="gameName">{{game.name}}</p>   
+                    </a>
+                    <p class="criticScore">{{(game.topCriticScore)|round(2)}}</p>
+                    <button class="addToLibrary" game-id="{{game.id}}">Add to library</button>
+                </div>
                 {%endfor%}
             </div>
             
             <div id="this_week">
                 <h2>Reviewed This Week</h2>
                 {% for game in this_week %}
-                <a href="/game/{{game.id}}">
-                    <p class="gameName">{{game.name}}</p>
-                    <p class="criticScore">{{game.topCriticScore}}</p>
-                </a>
+                    <div class="gameCard">
+                        <img src="{{url_for('static',filename='default_img.png')}}" alt="" width="240" height="160">
+                        <a href="/game/{{game.id}}">
+                            <p class="gameName">{{game.name}}</p>
+                        </a>
+                        <p class="criticScore">{{(game.topCriticScore)|round(2)}}</p>
+                        <button class="addToLibrary" game-id="{{game.id}}">Add to library</button>
+                    </div>
                 {%endfor%}
             </div>
 
             <div id="upcoming">
                 <h2>Upcoming Releases</h2>
                 {% for game in upcoming %}
-                <a href="/game/{{game.id}}">
-                    <p class="gameName">{{game.name}}</p>
-                    <p class="criticScore">{{game.topCriticScore}}</p>
-                </a>
+                    <div class="gameCard">
+                        <img src="{{url_for('static',filename='default_img.png')}}" alt="" width="240" height="160">
+                        <a href="/game/{{game.id}}">
+                            <p class="gameName">{{game.name}}</p>
+                        </a>
+                        <p class="criticScore">{{game.topCriticScore}}</p>
+                    </div>
                 {%endfor%}
+                
             </div>
 
         </div>
