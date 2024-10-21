@@ -14,7 +14,9 @@
 <body>
     <h1 id="maintitle">RemoCritic</h1>
     <p id="subtitle">The new review aggregator on the block</p>
-    <p>{{result}}</p>
+    {% for result in result %}
+    <p><a href="/game/{{result.id}}">{{result.name}}</a></p>
+    {% endfor %}
     <script src="{{url_for('static',filename='script.js')}}"></script>
 </body>
 </html>

@@ -17,6 +17,12 @@
     size: 10px;
 }
 
+#game{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+}
+
 .search {
     display: flex;
     text-align: center;

@@ -19,11 +19,11 @@
         <div class="flex-container">
 
             <div id="game">
-                <h2>{{game.name}}</h2>
+                <h2 id="gameName">{{game.name}}</h2>
                 <p id="description">{{game.description}}</p>
             </div>
 
-            <div id="ratings"><p>{{game.topCriticScore}}</p></div>
+            <div id="ratings"><p>{{(game.topCriticScore)|round(2)}}</p></div>
             
             <div id="userReview"><p>{{game.numReviews}}</p></div>
 
