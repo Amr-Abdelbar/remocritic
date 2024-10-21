@@ -76,8 +76,6 @@ def game(id):
     game_url = f"https://opencritic-api.p.rapidapi.com/game/{id}"
     game_response = requests.get(game_url, headers = headers).json()
 
-    print(game_response)
-
     return render_template("game.html", game = game_response, review=review_response)
 
 if __name__ == '__main__':
