@@ -24,15 +24,12 @@
         </div>
         <div class="flex-container">
 
-            <div id="hall_of_fame">
-
-            </div>
-
             <div id="popular">
                 <h2>Popular</h2>
                 {% for game in popular %}
                 <a href="/game/{{game.id}}">
                     <p class="gameName">{{game.name}}</p>
+                    <p>{{game.id}}</p>
                     <p class="criticScore">{{game.topCriticScore}}</p>
                 </a>
                 {%endfor%}
@@ -41,15 +38,20 @@
             <div id="this_week">
                 <h2>Reviewed This Week</h2>
                 {% for game in this_week %}
-                <p>{{game.name}}</p>
-                <img src="../default_img.png" alt="an image" width="240" height="160">
+                <a href="/game/{{game.id}}">
+                    <p class="gameName">{{game.name}}</p>
+                    <p class="criticScore">{{game.topCriticScore}}</p>
+                </a>
                 {%endfor%}
             </div>
 
             <div id="upcoming">
                 <h2>Upcoming Releases</h2>
                 {% for game in upcoming %}
-                <p>{{game.name}}</p>
+                <a href="/game/{{game.id}}">
+                    <p class="gameName">{{game.name}}</p>
+                    <p class="criticScore">{{game.topCriticScore}}</p>
+                </a>
                 {%endfor%}
             </div>
 

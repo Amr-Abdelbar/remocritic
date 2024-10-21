@@ -74,10 +74,10 @@ def game(id):
 	"x-rapidapi-host": "opencritic-api.p.rapidapi.com"
     }
 
-    review_url = f"https://opencritic-api.p.rapidapi.com/reviews/game/{{id}}"
+    review_url = f"https://opencritic-api.p.rapidapi.com/reviews/game/{id}"
     review_querystring = {"skip":"20","sort":"newest"}    
     review_response = requests.get(review_url, headers=headers, params = review_querystring).json() 
-    game_url = f"https://opencritic-api.p.rapidapi.com/game/{{id}}"
+    game_url = f"https://opencritic-api.p.rapidapi.com/game/{id}"
     game_response = requests.get(game_url, headers = headers).json()
 
     print(game_response)
