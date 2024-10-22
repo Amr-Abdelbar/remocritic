@@ -66,8 +66,17 @@ def homepage():
 @app.route('/userLibrary', methods=['GET', 'POST'])
 def userLibrary():
     if request.method == 'POST':
-
         data = request.get_json()
+        local_lib = open("localLib.JSON","r+")
+        lib_content = local_lib.read()
+        
+        for game in data:
+            if game in lib_content:
+                pass
+            else:
+                lib_content += game
+
+        local_lib.close()
         return jsonify({
             "message": "Stored in game library successfuly",
             "status": 200
