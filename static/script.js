@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
     } else {
         form.style.display =  'none';
         const welcome = document.createElement("p");
-        welcome.innerText = "Hey " + localStorage.getItem('userName') + "!";
+        welcome.innerText = "Logged in as " + localStorage.getItem('userName');
         const user = document.getElementById("user");
         user.prepend(welcome);
     }
