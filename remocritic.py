@@ -2,7 +2,7 @@ import datetime
 import json
 import matplotlib as plt
 import numpy as np
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 import requests
 
 class Game:
@@ -15,7 +15,7 @@ class Game:
 
     def beat(self):
         self.beaten = True
-        
+
 app = Flask("RemoCritic")
 app.secret_key = "ua6.czP7*~KSX_4#ym[U"
 
@@ -63,15 +63,23 @@ def homepage():
 
         return redirect(url_for('search_results'))
 
+@app.route('/userLibrary', methods=['GET', 'POST'])
+def userLibrary():
+    if request.method == 'POST':
+        data = request.get_json()
+
+        return jsonify({
+            "message": "Stored in game library successfuly",
+            "status": 200
+        })
+    else:
+        pass
+
 @app.route("/searchResults")
 def search_results():
     search_response = session.get("search_results", [])
 
     return render_template("searchResults.html", result = search_response)
-
-@app.route("/localUserLibrary")
-def local_user_lib():
-    return render_template("localUserLibrary.html")
 
 @app.route("/game/<id>")
 def game(id):

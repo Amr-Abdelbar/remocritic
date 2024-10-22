@@ -35,3 +35,30 @@ document.getElementById('login').addEventListener('submit', (e) => {
         location.reload();
     }
 })
+
+const addToLibrary = document.querySelectorAll('.addToLibrary');
+for (const library of addToLibrary) {
+    library.addEventListener('click', async (e) => {
+        const gameCard = e.target.parentElement;
+        const title = gameCard.innerText.split("\n")[0]
+        const rating = gameCard.innerText.split("\n")[1]
+        const id = e.target.getAttribute('game-id');
+        
+        const request = await fetch('http://127.0.0.1:5000/userLibrary', {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json', 
+            },
+            body: JSON.stringify({
+                    title: title,
+                    rating: rating,
+                    id: id
+                }) 
+            
+        })
+
+        const response = await request.json();
+        console.log(response);  
+        return;
+    })
+}
