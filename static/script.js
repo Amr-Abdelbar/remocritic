@@ -27,7 +27,6 @@ document.addEventListener("DOMContentLoaded", ()=> {
 document.getElementById('login').addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const loginButton = document.getElementById("loginButton");
     const loginInput = document.getElementById("loginInput");
 
     if (loginInput.value.length > 0) {

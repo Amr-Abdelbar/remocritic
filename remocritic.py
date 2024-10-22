@@ -5,6 +5,12 @@ import numpy as np
 from flask import Flask, render_template, request, redirect, url_for, session
 import requests
 
+class Game:
+    def __init__(self, name, id, owned = False, beaten = False):
+        self.name = name
+        self.id = id
+        
+
 app = Flask("RemoCritic")
 app.secret_key = "ua6.czP7*~KSX_4#ym[U"
 
