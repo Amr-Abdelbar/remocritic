@@ -9,8 +9,13 @@ class Game:
     def __init__(self, name, id, owned = False, beaten = False):
         self.name = name
         self.id = id
-        
+    
+    def remove():
+        pass
 
+    def beat(self):
+        self.beaten = True
+        
 app = Flask("RemoCritic")
 app.secret_key = "ua6.czP7*~KSX_4#ym[U"
 
