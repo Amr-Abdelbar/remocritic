@@ -29,7 +29,7 @@ def get_html(file_name):
 def homepage():
 
     headers = {
-        "x-rapidapi-key": "27b4fc4979mshbfd3db75c68c1eap1d626fjsnfa5a4fd9e706",
+        "x-rapidapi-key": "640030e84amsha682356e4ad90dap1efe26jsn3be433e406b4",
         "x-rapidapi-host": "opencritic-api.p.rapidapi.com"
         }
     
@@ -66,13 +66,16 @@ def homepage():
 @app.route('/userLibrary', methods=['GET', 'POST'])
 def userLibrary():
     if request.method == 'POST':
-        data = request.get_json()
 
+        data = request.get_json()
         return jsonify({
             "message": "Stored in game library successfuly",
             "status": 200
         })
     else:
+
+        
+
         return render_template("userLibrary.html")
 
 @app.route("/searchResults")
@@ -85,7 +88,7 @@ def search_results():
 def game(id):
 
     headers = {
-	"x-rapidapi-key": "27b4fc4979mshbfd3db75c68c1eap1d626fjsnfa5a4fd9e706",
+	"x-rapidapi-key": "640030e84amsha682356e4ad90dap1efe26jsn3be433e406b4",
 	"x-rapidapi-host": "opencritic-api.p.rapidapi.com"
     }
 
