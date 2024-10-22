@@ -69,14 +69,13 @@ def userLibrary():
         data = request.get_json()
         local_lib = open("localLib.JSON","a+")
         lib_content = local_lib.read()
-        
-        for game in data:
-            if game in lib_content:
-                pass
-            else:
-                lib_content += game
 
-        print(data)
+        if str(data) in lib_content:
+             pass
+        else:
+            lib_content += str(data)
+
+        local_lib.write(lib_content)
 
         local_lib.close()
         return jsonify({
@@ -88,7 +87,7 @@ def userLibrary():
         lib_content = local_lib.read()
 
         local_lib.close()
-        return render_template("userLibrary.html", userLibrary = local_lib)
+        return render_template("userLibrary.html", userLibrary = lib_content)
 
 @app.route("/searchResults")
 def search_results():
