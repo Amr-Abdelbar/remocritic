@@ -74,8 +74,6 @@ def userLibrary():
         })
     else:
 
-        
-
         return render_template("userLibrary.html")
 
 @app.route("/searchResults")
