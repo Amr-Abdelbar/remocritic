@@ -67,7 +67,7 @@ def homepage():
 def userLibrary():
     if request.method == 'POST':
         data = request.get_json()
-        local_lib = open("localLib.JSON","r+")
+        local_lib = open("localLib.JSON","a+")
         lib_content = local_lib.read()
         
         for game in data:
@@ -82,6 +82,10 @@ def userLibrary():
             "status": 200
         })
     else:
+
+        local_lib = open("localLib.JSON","a+")
+        lib_content = local_lib.read()
+        local_lib.close()
 
         return render_template("userLibrary.html")
 
