@@ -18,18 +18,20 @@ document.addEventListener("DOMContentLoaded", ()=> {
         form.style.display =  'none';
         welcome = document.createElement("p");
         welcome.innerHTML = "Hey " + localStorage.getItem('userName') + "!";
+        document.body.appendChild(welcome);
     }
 
 })
 
-document.getElementById('loginInput').addEventListener('submit', (e) => {
+document.getElementById('login').addEventListener('submit', (e) => {
     e.preventDefault();
 
     const loginButton = document.getElementById("loginButton");
-    const login = document.getElementById("login");
+    const loginInput = document.getElementById("loginInput");
 
-    if (login.value.length > 0) {
-        localStorage.setItem("userName", login.value);
-        login.value = '';
+    if (loginInput.value.length > 0) {
+        localStorage.setItem("userName", loginInput.value);
+        loginInput.value = '';
+        location.reload();
     }
 })

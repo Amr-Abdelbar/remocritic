@@ -37,9 +37,9 @@ well as the names of two properties and two methods.
 - Name of two properties:
 - Name of two methods:
 - File name and line numbers where the methods are used:
-- [] It makes use of JavaScript in the front end and uses the
+- [X] It makes use of JavaScript in the front end and uses the
 localStorage of the web browser.
-- [] It uses modern JavaScript (for example, let and const
+- [X] It uses modern JavaScript (for example, let and const
 rather than var).
 - [] It makes use of the reading and writing to the same file
 feature.
@@ -57,7 +57,7 @@ one example of a loop in your code.
 point.
 This value is received and processed by your back end
 Python code.
-- [] It doesn't generate any error message even if the user
+- [X] It doesn't generate any error message even if the user
 enters a wrong input.
 - [X] It is styled using your own CSS.
 - [X] The code follows the code and style conventions as
