@@ -41,7 +41,7 @@
                         {% if game.topCriticScore == -1 %}
                         <p class="criticScore">Unrated</p>
                         {% else %}
-                        <p class="criticScore">{{(game.topCriticScore)|round(2)}}</p>
+                        <p class="criticScore">{{(game.topCriticScore)|round(1)}}</p>
                         {% endif %}
                         <button class="addToLibrary" game-id="{{game.id}}">Add to library</button>
                     </div>
@@ -59,7 +59,7 @@
                             {% if game.topCriticScore == -1 %}
                             <p class="criticScore">Unrated</p>
                             {% else %}
-                            <p class="criticScore">{{(game.topCriticScore)|round(2)}}</p>
+                            <p class="criticScore">{{(game.topCriticScore)|round(1)}}</p>
                             {% endif %}
                             <button class="addToLibrary" game-id="{{game.id}}">Add to library</button>
                         </div>

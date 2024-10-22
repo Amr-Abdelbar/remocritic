@@ -41,7 +41,7 @@ for (const library of addToLibrary) {
     library.addEventListener('click', async (e) => {
         const gameCard = e.target.parentElement;
         const title = gameCard.innerText.split("\n")[0]
-        const rating = gameCard.innerText.split("\n")[1]
+        const rating = gameCard.innerText.split("\n")[2]
         const id = e.target.getAttribute('game-id');
         
         const request = await fetch('http://127.0.0.1:5000/userLibrary', {

@@ -76,15 +76,19 @@ def userLibrary():
             else:
                 lib_content += game
 
+        print(data)
+
         local_lib.close()
         return jsonify({
             "message": "Stored in game library successfuly",
             "status": 200
         })
     else:
-        
+        local_lib = open("localLib.JSON", "a+")
+        lib_content = local_lib.read()
 
-        return render_template("userLibrary.html")
+        local_lib.close()
+        return render_template("userLibrary.html", userLibrary = local_lib)
 
 @app.route("/searchResults")
 def search_results():
