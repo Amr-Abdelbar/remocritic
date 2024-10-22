@@ -73,7 +73,7 @@ def userLibrary():
             "status": 200
         })
     else:
-        pass
+        return render_template("userLibrary.html")
 
 @app.route("/searchResults")
 def search_results():
