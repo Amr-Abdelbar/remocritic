@@ -16,9 +16,10 @@ document.addEventListener("DOMContentLoaded", ()=> {
         form.style.display = 'block';
     } else {
         form.style.display =  'none';
-        welcome = document.createElement("p");
-        welcome.innerHTML = "Hey " + localStorage.getItem('userName') + "!";
-        document.body.appendChild(welcome);
+        const welcome = document.createElement("p");
+        welcome.innerText = "Hey " + localStorage.getItem('userName') + "!";
+        const user = document.getElementById("user");
+        user.prepend(welcome);
     }
 
 })

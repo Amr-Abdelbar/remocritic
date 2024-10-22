@@ -29,10 +29,17 @@
     justify-content: space-evenly;
 }
 
+#user {
+    display: flex;
+    text-align: left;
+    justify-content: flex-start;
+}
+
 .flex-container {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    text-align: center;
 }
 
 #this_week {
