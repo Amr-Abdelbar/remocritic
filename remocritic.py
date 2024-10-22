@@ -29,7 +29,7 @@ def get_html(file_name):
 def homepage():
 
     headers = {
-        "x-rapidapi-key": "640030e84amsha682356e4ad90dap1efe26jsn3be433e406b4",
+        "x-rapidapi-key": "a374990eafmsh0e1261ce05bf6f1p1c7012jsn9edd139d87b7",
         "x-rapidapi-host": "opencritic-api.p.rapidapi.com"
         }
     
@@ -95,7 +95,7 @@ def search_results():
 def game(id):
 
     headers = {
-	"x-rapidapi-key": "640030e84amsha682356e4ad90dap1efe26jsn3be433e406b4",
+	"x-rapidapi-key": "a374990eafmsh0e1261ce05bf6f1p1c7012jsn9edd139d87b7",
 	"x-rapidapi-host": "opencritic-api.p.rapidapi.com"
     }
 
