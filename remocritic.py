@@ -5,6 +5,8 @@ class Game:
     def __init__(self, name, id, owned = False, beaten = False):
         self.name = name
         self.id = id
+        self.owned = owned
+        self.beaten = beaten
     
     def remove():
         pass
@@ -71,7 +73,7 @@ def userLibrary():
             if str(data) in lib_content:
                 del(data)
             else:
-                local_lib.write(str(data) + "\n")
+                local_lib.write(str(data))
         
         local_lib.close()
         return jsonify({
