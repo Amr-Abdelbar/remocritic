@@ -22,8 +22,10 @@
     </nav>
 </head>
 <body>
+    <div id="logo">
     <h1 id="maintitle">RemoCritic</h1>
     <p id="subtitle">The new review aggregator on the block</p>
+    </div>
     {% for result in result %}
     <p><a href="/game/{{result.id}}">{{result.name}}</a></p>
     {% endfor %}

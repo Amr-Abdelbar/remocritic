@@ -7,6 +7,13 @@
     text-align: center;
 }
 
+#userLibrary {
+    display: flex;
+    flex-flow: row;
+    text-align: center;
+    justify-content: space-evenly;
+}
+
 #maintitle {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #22c78d;

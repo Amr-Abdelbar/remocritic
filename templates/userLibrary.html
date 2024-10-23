@@ -22,15 +22,19 @@
     </nav>
 </head>
 <body>
-    <h1 id="maintitle">RemoCritic</h1>
-    <p id="subtitle">The new review aggregator on the block</p>
+    <div id="logo">
+        <h1 id="maintitle">RemoCritic</h1>
+        <p id="subtitle">The new review aggregator on the block</p>
+    </div>
     <h2>User Library</h2>
     {% for game in userLibrary %}
-    <div class="gameCard">
-        <a href="/game/{{game.id}}">
-            <p class="gameName">{{game.title}}</p>   
-        </a>
-        <p class="gameRating">{{game.rating}}</p>   
+    <div id="userLibrary">
+        <div class="gameCard">
+            <a href="/game/{{game.id}}">
+                <p class="gameName">{{game.title}}</p>   
+            </a>
+            <p class="gameRating">{{game.rating}}</p>   
+        </div>
     </div>
     {% endfor %}
     <script src="{{url_for('static',filename='script.js')}}"></script>
