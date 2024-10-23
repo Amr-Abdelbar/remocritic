@@ -1,19 +1,17 @@
 # MY FINAL PROJECT (RemoCritic)
-RemoCritic (Remote Critic cause Remote Coders, get it? ;D) is a review aggregator similar to MetaCritic.
+RemoCritic (Remote Critic cause Remote Coders, get it?) is a review aggregator similar to MetaCritic.
 
 - What does it do?
 It aggregates videogame reviews and displays an average rating based on those
 
 - What is the "new feature" which you have implemented that
 we haven't seen before?
-Example: "Chart drawing library graphs the user data"
 
 ## Prerequisites
 Did you add any additional modules that someone needs to
 install (for instance anything in Python that you `pip
 install-ed`)?
 
-- Matplotlib
 - Flask
 
 ## Project Checklist
@@ -23,7 +21,7 @@ install-ed`)?
 Library other than the random module.
 Please provide the name of the module you are using in your
 app.
-- Module name: datetime
+- Module name: requests
 - [] It contains at least one class written by you that has
 both properties and methods. It uses `__init__()` to let the
 class initialize the object's attributes (note that
@@ -41,18 +39,18 @@ well as the names of two properties and two methods.
 localStorage of the web browser.
 - [X] It uses modern JavaScript (for example, let and const
 rather than var).
-- [] It makes use of the reading and writing to the same file
+- [X] It makes use of the reading and writing to the same file
 feature.
 - [X] It contains conditional statements. Please provide below
 the file name and the line number(s) of at least
 one example of a conditional statement in your code.
 - File name: remocritic.py
 - Line number(s): 25
-- [] It contains loops. Please provide below the file name
+- [X] It contains loops. Please provide below the file name
 and the line number(s) of at least
 one example of a loop in your code.
-- File name:
-- Line number(s):
+- File name: index.html (python-style loop using jinja)
+- Line number(s): 35
 - [X] It lets the user enter a value in a text box at some
 point.
 This value is received and processed by your back end
