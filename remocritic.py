@@ -70,11 +70,13 @@ def userLibrary():
         local_lib = open("localLib.JSON","a+")
         lib_content = local_lib.read()
         
-        for game in data:
-            if game in lib_content:
+        if data:
+            if str(data) in lib_content:
                 pass
             else:
-                lib_content += game
+                local_lib.write(str(data + "\n"))
+        
+        
 
         local_lib.close()
         return jsonify({
