@@ -21,7 +21,7 @@ install-ed`)?
 Library other than the random module.
 Please provide the name of the module you are using in your
 app.
-- Module name: requests
+- Module name: requests, json
 - [X] It contains at least one class written by you that has
 both properties and methods. It uses `__init__()` to let the
 class initialize the object's attributes (note that
