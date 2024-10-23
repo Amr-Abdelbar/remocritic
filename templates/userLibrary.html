@@ -25,11 +25,19 @@
     <h1 id="maintitle">RemoCritic</h1>
     <p id="subtitle">The new review aggregator on the block</p>
     <h2>User Library</h2>
-    <ul id="userLibrary">
-        {% for game in userLibrary %}
-        <li>{{game.name}}</li>
-        {% endfor %}
-    </ul>
+    {% for game in userLibrary %}
+    <div class="gameCard">
+        <img src="{{url_for('static',filename='default_img.png')}}" alt="" width="240" height="160">
+        <a href="/game/{{game.id}}">
+            <p class="gameName">{{game.name}}</p>   
+        </a>
+        {% if game.topCriticScore == -1 %}
+        <p class="criticScore">Unrated</p>
+        {% else %}
+        <p class="criticScore">{{(game.topCriticScore)|round(1)}}</p>
+        {% endif %}
+    </div>
+    {% endfor %}
     <script src="{{url_for('static',filename='script.js')}}"></script>
 </body>
 </html>

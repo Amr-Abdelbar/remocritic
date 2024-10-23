@@ -8,8 +8,11 @@ class Game:
         self.owned = owned
         self.beaten = beaten
     
-    def remove():
-        pass
+    def add(self):
+        self.owned = True
+
+    def remove(self):
+        self.owned = False
 
     def beat(self):
         self.beaten = True
