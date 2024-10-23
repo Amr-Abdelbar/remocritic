@@ -84,6 +84,8 @@ def userLibrary():
             "status": 200
         })
     else:
+        local_lib = open("localLib.JSON", "a+")
+        lib_content = local_lib.read()
 
         local_lib = open("localLib.JSON","a+")
         lib_content = local_lib.read()
