@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 import requests
+import json
 
 class Game:
     def __init__(self, name, id, owned = False, beaten = False):
@@ -68,28 +69,26 @@ def homepage():
 def userLibrary():
     if request.method == 'POST':
         data = request.get_json()
-        local_lib = open("localLib.JSON","r+")
-        lib_content = local_lib.read()
-        print(lib_content)
+
+        with open("localLib.JSON", "r") as local_lib:
+            try:
+                lib = json.load(local_lib)
+                if data not in lib:
+                    lib.append(data)
+            except: 
+                lib = []
+                lib.append(data)
+        with open("localLib.JSON", "w") as local_lib:
+            json.dump(lib, local_lib)
         
-        if data:
-            if str(data) in lib_content:
-                del(data)
-            else:
-                local_lib.write(str(data))
-        
-        local_lib.close()
         return jsonify({
             "message": "Stored in game library successfuly",
             "status": 200
         })
     else:
-        local_lib = open("localLib.JSON", "r+")
         lib_content = local_lib.read()
 
-        local_lib = open("localLib.JSON","r+")
-        lib_content = local_lib.read()
-        local_lib.close()
+
 
         return render_template("userLibrary.html")
 
