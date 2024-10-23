@@ -1,7 +1,3 @@
-import datetime
-import json
-import matplotlib as plt
-import numpy as np
 from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 import requests
 
