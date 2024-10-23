@@ -28,8 +28,9 @@
     {% for game in userLibrary %}
     <div class="gameCard">
         <a href="/game/{{game.id}}">
-            <p class="gameName">{{game.name}}</p>   
+            <p class="gameName">{{game.title}}</p>   
         </a>
+        <p class="gameRating">{{game.rating}}</p>   
     </div>
     {% endfor %}
     <script src="{{url_for('static',filename='script.js')}}"></script>

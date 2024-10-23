@@ -87,9 +87,10 @@ def userLibrary():
         })
     else:
         with open("localLib.JSON", "r") as local_lib:
-            lib_content = local_lib.read()
+            lib = json.load(local_lib)
+            print(lib)
 
-            return render_template("userLibrary.html", userLibrary = lib_content)
+            return render_template("userLibrary.html", userLibrary = lib)
 
 @app.route("/searchResults")
 def search_results():
