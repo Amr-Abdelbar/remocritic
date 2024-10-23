@@ -31,11 +31,6 @@
         <a href="/game/{{game.id}}">
             <p class="gameName">{{game.name}}</p>   
         </a>
-        {% if game.topCriticScore == -1 %}
-        <p class="criticScore">Unrated</p>
-        {% else %}
-        <p class="criticScore">{{(game.topCriticScore)|round(1)}}</p>
-        {% endif %}
     </div>
     {% endfor %}
     <script src="{{url_for('static',filename='script.js')}}"></script>

@@ -86,11 +86,10 @@ def userLibrary():
             "status": 200
         })
     else:
-        lib_content = local_lib.read()
+        with open("localLib.JSON", "r") as local_lib:
+            lib_content = local_lib.read()
 
-
-
-        return render_template("userLibrary.html")
+            return render_template("userLibrary.html", userLibrary = lib_content)
 
 @app.route("/searchResults")
 def search_results():
