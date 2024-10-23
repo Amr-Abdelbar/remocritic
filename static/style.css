@@ -7,9 +7,27 @@
     text-align: center;
 }
 
+.gameCard {
+    border: 5%;
+    border-color: darkseagreen;
+}
+
+.userLibContainer{
+    text-align: center;
+}
+
 #userLibrary {
     display: flex;
-    flex-flow: row;
+    text-align: center;
+    justify-content: space-evenly;
+    flex-flow: column;
+}
+
+
+
+#userlibtitle {
+    display: flex;
+    flex-flow: column;
     text-align: center;
     justify-content: space-evenly;
 }
