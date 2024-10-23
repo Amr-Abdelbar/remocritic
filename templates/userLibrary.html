@@ -27,7 +27,6 @@
     <h2>User Library</h2>
     {% for game in userLibrary %}
     <div class="gameCard">
-        <img src="{{url_for('static',filename='default_img.png')}}" alt="" width="240" height="160">
         <a href="/game/{{game.id}}">
             <p class="gameName">{{game.name}}</p>   
         </a>
