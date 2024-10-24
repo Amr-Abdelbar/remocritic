@@ -21,12 +21,6 @@ class Game:
 app = Flask("RemoCritic")
 app.secret_key = "ua6.czP7*~KSX_4#ym[U"
 
-def get_html(file_name):
-    html_file = open(file_name + ".html")
-    content = html_file.read()
-    html_file.close()
-    return content
-
 @app.route("/", methods = ["GET", "POST"] )
 def homepage():
 
