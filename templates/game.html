@@ -26,6 +26,9 @@
                 </form>
             </div>
         </nav>
+
+        
+
         <div class="flex-container">
 
             <div id="game">
@@ -33,11 +36,15 @@
                 <p id="description">{{game.description}}</p>
             </div>
 
-            <div id="ratings"><p>{{(game.topCriticScore)|round(2)}}</p></div>
-            
-            <div id="userReview"><p>{{game.numReviews}}</p></div>
+
 
         </div>
+
+        <div id="ratings"><p>Critic score: {{(game.topCriticScore)|round(2)}}</p> <br></div>
+            
+        <div id="userReview"><p>Number of reviews: {{game.numReviews}}</p></div>
+
+        
         <script src="{{url_for('static',filename='script.js')}}"></script>
 </body>
 </html>

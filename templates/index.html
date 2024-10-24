@@ -29,7 +29,6 @@
             </div>
         </nav>
         <div class="flex-container">
-            <div class="gameList"></div>
                 <div id="popular">
                     <h2>Popular</h2>
                     {% for game in popular %}
@@ -83,7 +82,6 @@
                     {%endfor%}
                     
                 </div>
-            </div>
         </div>
         <script src="{{url_for('static',filename='script.js')}}"></script>
 </body>
