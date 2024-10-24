@@ -56,6 +56,7 @@
 
 
 .flex-container {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -78,11 +79,13 @@
 }
 
 .game {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     display: flex;
     text-align: center;
 }
 
 .description {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     display: flex;
     text-align: center;
 }
