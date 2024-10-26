@@ -6,10 +6,19 @@ function userLogged() {
     return true
 }
 
-document.addEventListener("DOMContentLoaded", ()=> {
-    const gameCard = document.getElementsByClassName("gameList");
-    const addLibButton = document.getElementsByClassName("addToLibrary");
+async function inLibrary() {
+    const response = await fetch('http://127.0.0.1:5000/userLibrary', {
+        method: 'GET',
+        headers: {
+            'Content-type': 'application/json', 
+        } 
+    });
 
+    const userLibrary = await response.json();
+    return library;
+}
+
+document.addEventListener("DOMContentLoaded", async ()=> {
     const form = document.getElementsByClassName('login')[0];
 
     if (!userLogged()) {
@@ -20,6 +29,8 @@ document.addEventListener("DOMContentLoaded", ()=> {
         welcome.innerText = "Logged in as " + localStorage.getItem('userName');
         const user = document.getElementById("user");
         user.prepend(welcome);
+
+        const userLibrary = await inLibrary();
     }
 
 })
