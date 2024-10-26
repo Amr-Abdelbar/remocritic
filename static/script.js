@@ -6,7 +6,7 @@ function userLogged() {
     return true
 }
 
-async function inLibrary() {
+async function getLibrary() {
     const response = await fetch('http://127.0.0.1:5000/userLibrary', {
         method: 'GET',
         headers: {
@@ -15,7 +15,16 @@ async function inLibrary() {
     });
 
     const userLibrary = await response.json();
-    return library;
+    return userLibrary;
+}
+
+function inLibrary(id, library) {
+    for(let i = 0; i < library.length; i++) {
+        if(library[i].id === id) {
+            return true;
+        }
+    }
+    return false;
 }
 
 document.addEventListener("DOMContentLoaded", async ()=> {
@@ -25,51 +34,80 @@ document.addEventListener("DOMContentLoaded", async ()=> {
         form.style.display = 'block';
     } else {
         form.style.display =  'none';
-        const welcome = document.createElement("p");
-        welcome.innerText = "Logged in as " + localStorage.getItem('userName');
+        const welcome = document.createElement('p');
+        welcome.innerText = 'Logged in as ' + localStorage.getItem('userName');
         const user = document.getElementById("user");
         user.prepend(welcome);
 
         const userLibrary = await inLibrary();
+
+        const libraryButtons = document.querySelectorAll('.addToLibrary');
+        for (const button of libraryButtons) {
+            const gameCard = button.parentElement;
+            const id = button.getAttribute('game-id');
+
+            const isInLibrary = inLibrary(id, userLibrary);
+            
+            if (isInLibrary){
+                button.innerText = 'Remove from Library';
+                button.classList.add('removeFromLibrary');
+            } else {
+                button.innerText = 'Add to Library';
+                button.classList.add('addToLibrary');
+            }
+
+            button.addEventListener('click', async (e) => {
+                if (button.innerText == 'Add to Library'){
+                    await addToLibrary(id, gameCard.innerText.split('\n')[0], gameCard);
+                    button.innerText = 'Remove from Library';
+                } else {
+                    await removeFromLibrary(id, gameCard);
+                    button.innerText = 'Add to Library';
+                }
+            })
     }
 
-})
+}})
 
 document.getElementById('login').addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const loginInput = document.getElementById("loginInput");
+    const loginInput = document.getElementById('loginInput');
 
     if (loginInput.value.length > 0) {
-        localStorage.setItem("userName", loginInput.value);
+        localStorage.setItem('userName', loginInput.value);
         loginInput.value = '';
         location.reload();
     }
 })
 
-const addToLibrary = document.querySelectorAll('.addToLibrary');
-for (const library of addToLibrary) {
-    library.addEventListener('click', async (e) => {
-        const gameCard = e.target.parentElement;
-        const title = gameCard.innerText.split("\n")[0]
-        const rating = gameCard.innerText.split("\n")[2]
-        const id = e.target.getAttribute('game-id');
-        
-        const request = await fetch('http://127.0.0.1:5000/userLibrary', {
-            method: 'POST',
-            headers: {
-                'Content-type': 'application/json', 
-            },
-            body: JSON.stringify({
-                    title: title,
-                    rating: rating,
-                    id: id
-                }) 
-            
-        })
+async function addToLibrary(id, title, gameCard) {
+    const rating = gameCard.innerText.split('\n')[2];
 
-        const response = await request.json();
-        console.log(response);  
-        return;
-    })
+    const request = await fetch('https://127.0.0.1:5000/userLibrary', {
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json',
+        },
+        body: JSON.stringify({
+            title: title,
+            rating: rating,
+            id: id
+        })
+    });
+
+    const response = await request.json();
+    console.log(response)
+}
+
+async function removeFromLibrary(id, gameCard) {
+    const request = await fetch('http://127.0.0.1:5000/userLibrary',{
+        method: 'DELETE',
+        headers: {
+            'Content-type': 'application/json',
+        },
+        body: JSON.stringify({id:id})
+    });
+    const response = await request.json();
+    console.log(response);
 }
