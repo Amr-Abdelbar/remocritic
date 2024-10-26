@@ -1,3 +1,7 @@
+body {
+    background-color: rgb(244, 244, 248);
+}
+
 #navbar {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: center;
@@ -10,6 +14,11 @@
 #header{
     display: flex;
     flex-flow: row;
+    background-color: rgb(33, 37, 41);
+}
+
+#user {
+    color: #BDBDBD;
 }
 
 .gameCard {
