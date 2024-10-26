@@ -7,9 +7,15 @@
     text-align: center;
 }
 
+#header{
+    display: flex;
+    flex-flow: row;
+}
+
 .gameCard {
-    border: 30%;
-    border-color: darkseagreen;
+    background-color: azure;
+    padding: 1em;
+    margin: 2em;
 }
 
 .userLibContainer{
@@ -35,11 +41,6 @@
 #maintitle {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #22c78d;
-}
-
-#subtitle {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    size: 10px;
 }
 
 #game{
