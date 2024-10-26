@@ -5,7 +5,6 @@ function userLogged() {
     }
     return true
 }
-
 async function getLibrary() {
     const response = await fetch('http://127.0.0.1:5000/userLibrary', {
         method: 'GET',
@@ -13,8 +12,7 @@ async function getLibrary() {
             'Content-type': 'application/json', 
         } 
     });
-
-    const userLibrary = await response.json();
+    const userLibrary = await response.text();
     return userLibrary;
 }
 
@@ -39,7 +37,7 @@ document.addEventListener("DOMContentLoaded", async ()=> {
         const user = document.getElementById("user");
         user.prepend(welcome);
 
-        const userLibrary = await inLibrary();
+        const userLibrary = await getLibrary();
 
         const libraryButtons = document.querySelectorAll('.addToLibrary');
         for (const button of libraryButtons) {
@@ -57,7 +55,7 @@ document.addEventListener("DOMContentLoaded", async ()=> {
             }
 
             button.addEventListener('click', async (e) => {
-                if (button.innerText == 'Add to Library'){
+                if (button.innerText === 'Add to Library'){
                     await addToLibrary(id, gameCard.innerText.split('\n')[0], gameCard);
                     button.innerText = 'Remove from Library';
                 } else {
@@ -82,9 +80,9 @@ document.getElementById('login').addEventListener('submit', (e) => {
 })
 
 async function addToLibrary(id, title, gameCard) {
-    const rating = gameCard.innerText.split('\n')[2];
+    const rating = gameCard.querySelector('.criticScore').innerText;
 
-    const request = await fetch('https://127.0.0.1:5000/userLibrary', {
+    const request = await fetch('http://127.0.0.1:5000/userLibrary', {
         method: 'POST',
         headers: {
             'Content-type': 'application/json',

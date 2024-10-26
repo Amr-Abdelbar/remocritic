@@ -59,11 +59,10 @@ def homepage():
 
         return redirect(url_for('search_results'))
 
-@app.route('/userLibrary', methods=['GET', 'POST'])
+@app.route('/userLibrary', methods=['GET', 'POST', 'DELETE'])
 def userLibrary():
     if request.method == 'POST':
         data = request.get_json()
-
         with open("localLib.JSON", "r") as local_lib:
             try:
                 lib = json.load(local_lib)
@@ -79,12 +78,29 @@ def userLibrary():
             "message": "Stored in game library successfuly",
             "status": 200
         })
-    else:
+    elif request.method == 'GET':
         with open("localLib.JSON", "r") as local_lib:
             lib = json.load(local_lib)
-            print(lib)
 
             return render_template("userLibrary.html", userLibrary = lib)
+    else:
+
+        data = request.get_json()
+        game_id = data.get("id")
+        with open("localLib.JSON", "r") as local_lib:
+            lib = json.load(local_lib)
+        for game in lib:
+            if game["id"] == game_id:
+                lib.remove(game)
+                break
+
+        with open("localLib.JSON", "w") as local_lib:
+            json.dump(lib, local_lib)
+        
+        return jsonify ({
+            "message": "Game removed from library",
+            "status": 200
+        })
 
 @app.route("/searchResults")
 def search_results():
