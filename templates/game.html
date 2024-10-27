@@ -5,9 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Remote Critic</title>
     <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
-    <link rel="icon" type="image/x-icon" href="{{url_for('static',filename='favicon.ico')}}">
-</head>
-<body>
+    <link rel="icon" type="image/x-icon" href="{{url_for('static',filename='favicon.ico')}}"> 
+       <div id="header">
         <div id="logo">
             <h1 id="maintitle">RemoCritic</h1>
         </div>
@@ -18,7 +17,9 @@
                     <input type="submit" value="Login" id="loginButton">
                 </form>
             </div>
-            <div id="user"></div>
+            <div id="user">
+                <a href="/userLibrary">View library</a>
+            </div>
             <div class="search">
                 <form action="/" method="post">
                     <input type="text" name="search" id="search" placeholder="search for your game ...." required>
@@ -26,6 +27,9 @@
                 </form>
             </div>
         </nav>
+    </div>
+</head>
+<body>
 
         
 

@@ -72,7 +72,7 @@ def userLibrary():
                 lib = []
                 lib.append(data)
         with open("localLib.JSON", "w") as local_lib:
-            json.dump(lib, local_lib)
+            json.dump(lib, local_lib, indent = 4)
         
         return jsonify({
             "message": "Stored in game library successfuly",
@@ -95,7 +95,7 @@ def userLibrary():
                 break
 
         with open("localLib.JSON", "w") as local_lib:
-            json.dump(lib, local_lib)
+            json.dump(lib, local_lib, indent = 4)
         
         return jsonify ({
             "message": "Game removed from library",
@@ -109,13 +109,10 @@ def userLibrary():
         with open("localLib.JSON", "r") as local_lib:
             lib = json.load(local_lib)
         
-        game_finder = False
         for game in lib:
             if game["id"] == game_id:
                 for key, value in updates.items():
-                    game[key] = value
-                game_finder = True
-                break
+                        game[key] = value
         
         
         with open("localLib.JSON", "w") as local_lib:

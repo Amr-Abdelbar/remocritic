@@ -6,21 +6,28 @@
     <title>Search Result</title>
     <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
     <link rel="icon" type="image/x-icon" href="{{url_for('static',filename='favicon.ico')}}">
-    <nav id="navbar">
-        <div class="login">
-            <form id="login">
-                <input type="text" name="login" id="loginInput" placeholder="please enter your name" required>
-                <input type="submit" value="Login" id="loginButton">
-            </form>
+    <div id="header">
+        <div id="logo">
+            <h1 id="maintitle">RemoCritic</h1>
         </div>
-        <div id="user"></div>
-        <div class="search">
-            <form action="/" method="post">
-                <input type="text" name="search" id="search" placeholder="search for your game ...." required>
-                <input type="submit" value="Search">
-            </form>
-        </div>
-    </nav>
+        <nav id="navbar">
+            <div class="login">
+                <form id="login">
+                    <input type="text" name="login" id="loginInput" placeholder="please enter your name" required>
+                    <input type="submit" value="Login" id="loginButton">
+                </form>
+            </div>
+            <div id="user">
+                <a href="/userLibrary">View library</a>
+            </div>
+            <div class="search">
+                <form action="/" method="post">
+                    <input type="text" name="search" id="search" placeholder="search for your game ...." required>
+                    <input type="submit" value="Search">
+                </form>
+            </div>
+        </nav>
+    </div>
 </head>
 <body>
     <div id="logo">
