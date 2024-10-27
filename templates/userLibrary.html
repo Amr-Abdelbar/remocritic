@@ -28,7 +28,7 @@
         <h2 id="userlibtitle">User Library</h2>
         {% for game in userLibrary %}
         <div id="userLibrary">
-            <div class="gameCard">
+            <div class="gameCard" game-id="{{game.id}}">
                 <a href="/game/{{game.id}}">
                     <p class="gameName">{{game.title}}</p>   
                 </a>
