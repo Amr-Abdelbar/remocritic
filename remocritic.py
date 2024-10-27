@@ -3,14 +3,19 @@ import requests
 import json
 
 class Game:
-    def __init__(self, name, id, owned = False, beaten = False):
+    def __init__(self, name, id, owned = False, beaten = False, note = ""):
         self.name = name
         self.id = id
         self.owned = owned
         self.beaten = beaten
-    
-    def add(self):
-        self.owned = True
+        self.note = note
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "note": self.note
+        }
 
     def remove(self):
         self.owned = False
