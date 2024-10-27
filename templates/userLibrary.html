@@ -28,9 +28,10 @@
         </nav>
     </div>
 </head>
-<body>
+<body>        
+    <h2 id="userlibtitle">User Library</h2>
     <div class="userLibContainer">
-        <h2 id="userlibtitle">User Library</h2>
+
         {% for game in userLibrary %}
         <div id="userLibrary">
             <div class="gameCard" game-id="{{game.id}}">

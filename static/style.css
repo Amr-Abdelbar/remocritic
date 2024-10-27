@@ -7,6 +7,10 @@ body {
     text-align: center;
 }
 
+.game-page {
+    display: flex;
+}
+
 #logo {
     text-align: center;
 }
@@ -14,6 +18,8 @@ body {
 #header{
     display: flex;
     flex-flow: row;
+    text-align: center;
+    justify-content: space-evenly;
     background-color: rgb(33, 37, 41);
 }
 
@@ -28,7 +34,10 @@ body {
 }
 
 .userLibContainer{
+    display: flex;
+    flex-direction: row;
     text-align: center;
+    justify-content: space-evenly;
 }
 
 #userLibrary {
@@ -96,6 +105,8 @@ body {
 
 .description {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    width: 70%;
     display: flex;
+    flex-wrap: wrap;
     text-align: center;
 }
