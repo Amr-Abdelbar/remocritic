@@ -109,3 +109,22 @@ async function removeFromLibrary(id, gameCard) {
     const response = await request.json();
     console.log(response);
 }
+
+document.getElementById('noteButton').addEventListener('click', async () =>{
+    const note = document.getElementById('noteInput').value;
+    const gameId = '{{game.id}}';
+
+    const request = await fetch('http://127.0.0.1:5000/userLibrary', {
+        method: 'PUT',
+        headers: {
+            'Content-type': 'application/json',
+        },
+        body: JSON.stringify({
+            id: gameId,
+            updates: { note: note }
+        })
+    })
+
+    const response = await request.json();
+    console.log(response);
+})
