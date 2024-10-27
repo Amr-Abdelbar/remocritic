@@ -39,9 +39,9 @@
                     <p class="gameName">{{game.title}}
                     </p>   
                 </a>
-                <p class="gameRating">{{str(game.rating)}}</p>
+                <p class="gameRating">{{game.rating}}</p>
                 <div id="userNote">
-                    <textarea name="noteInput" id="noteInput" placeholder="Type your note here">{{game.note}}</textarea>
+                    <textarea name="noteInput" id="noteInput" class = "noteInput" placeholder="Type your note here">{{game.note}}</textarea>
                     <button id="noteButton">Save</button>
                 </div>
                    
